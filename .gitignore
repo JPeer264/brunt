@@ -1,0 +1,11 @@
+# grunt generated files
+dist
+tmp
+.cache
+
+# modules
+bower_components
+node_modules
+
+# mac files
+.DS_STORE
