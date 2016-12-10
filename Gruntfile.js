@@ -12,6 +12,8 @@ const names = {
     src: 'src',
     assets: 'assets',
     dest: 'dist',
+    tmp: 'tmp',
+    cache: '.cache',
 };
 
 module.exports = function(grunt) {
@@ -38,7 +40,7 @@ module.exports = function(grunt) {
         paths: {
             base: ".",
             cache: {
-                base: "<%=  paths.base      %>/.cache",
+                base: "<%=  paths.base      %>/<%= names.cache %>",
                 tests: "<%= paths.cache.base  %>/**/*.spec.js",
                 folder: {
                     assets: {
@@ -158,7 +160,7 @@ module.exports = function(grunt) {
                 }
             },
             tmp: {
-                base: "<%= paths.base %>/tmp",
+                base: "<%= paths.base %>/<%= names.tmp %>",
                 folder: {
                     assets: {
                         base: "<%=   paths.tmp.base %>/<%= names.assets %>",
@@ -525,6 +527,7 @@ grunt.config.merge(loadConfig('./config/grunt/options/'));
             dirName = dir.substr(dir.lastIndexOf('.')+1);
 
             // get the current concat object from initConfig
+            var copy   = grunt.config.get('copy')   || {};
             var sass   = grunt.config.get('sass')   || {};
             var concat = grunt.config.get('concat') || {};
             var clean  = grunt.config.get('clean')  || {};
@@ -548,7 +551,10 @@ grunt.config.merge(loadConfig('./config/grunt/options/'));
                 };
 
                 clean[dirName] = {
-                    src: dir + '/' + dirName + '.GruntGenerated.scss'
+                    src: [
+                        dir + '/' + dirName + '.GruntGenerated.scss',
+                        dir + '/' + dirName + '.GruntGenerated.scss.map'
+                    ]
                 };
 
                 // add module subtasks to the concat task in initConfig
