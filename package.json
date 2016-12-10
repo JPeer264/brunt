@@ -45,6 +45,7 @@
     "grunt-contrib-csslint": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-eslint": "^19.0.0",
+    "grunt-html-validation": "^0.1.18",
     "grunt-istanbul": "^0.7.2",
     "grunt-jsinspect": "^2.0.0",
     "grunt-remove-logging": "^0.2.0",
