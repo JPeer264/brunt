@@ -9,16 +9,16 @@ module.exports = {
 		js: {
 			files: "<%= paths.src.folder.assets.jss %>/*.js",
 			tasks: [
-				"concat:js"
+				"manage:js:own"
 			]
 		},
 		oldBrowserCss: {
 			files: [
-				"<%= paths.src.folder.assets.scsss %>/*.scss",
-				"!<%= paths.src.folder.assets.scss %>/*.scss"
+				"<%= paths.src.folder.assets.scss %>/browser.*/**/*.scss",
 			],
 			tasks: [
-				"manageScssFolders"
+				"manageScssFolders",
+				"postcss"
 			]
 		},
 		copy: {
@@ -37,7 +37,7 @@ module.exports = {
 			]
 		}
 	},
-	connect: {
+	php: {
 		reports: {
 			options: {
 				base: "<%= paths.reports.coverage %>",
@@ -60,29 +60,6 @@ module.exports = {
 				port: 1337,
 				base: "tmp"
 			}
-		},
-		prod: {
-			options: {
-				hostname: "<%= connect.dev.options.hostname %>",
-				port: "<%= connect.dev.options.port %>",
-				base: "<%= hstn.names.dest %>"
-			}
-		}
-	},
-	php: {
-		options: {
-			hostname: "<%= connect.dev.options.hostname %>",
-			port: "<%= connect.dev.options.port %>"
-		},
-		dev: {
-			options: {
-				base: "tmp"
-			}
-		},
-		prod: {
-			options: {
-				base: "<%= hstn.names.dest %>"
-			}
 		}
 	},
 	browserSync: {
@@ -95,19 +72,15 @@ module.exports = {
 				]
 			},
 			options: {
-				proxy: "<%= connect.dev.options.hostname %>:<%= connect.dev.options.port %>",
+				proxy: "<%= php.dev.options.hostname %>:<%= php.dev.options.port %>",
 				port: 1338,
 				open: true,
 				watchTask: true,
-				notify: true,
-				logLevel: "silent",
-				ghostMode: {
-					clicks: true,
-					scroll: true,
-					links: true,
-					forms: true
-				}
+				notify: true
 			}
+		},
+		test: {
+
 		}
 	}
 };

@@ -579,13 +579,21 @@ grunt.config.merge(loadConfig('./config/grunt/options/'));
                 "postcss",
                 "clean:cache"
             ],
-            js: [
-                "babel",
-                "concat:js",
-                "bower_concat",
-                "concat:vendor",
-                "clean:bower"
-            ]
+            js: {
+                default: [
+                    'manage:js:own',
+                    'manage:js:vendor'
+                ],
+                own: [
+                    "babel",
+                    "concat:js",
+                ],
+                vendor: [
+                    "bower_concat",
+                    "concat:vendor",
+                    "clean:bower"
+                ]
+            }
         },
         minify: {
             default: [
@@ -639,7 +647,7 @@ grunt.config.merge(loadConfig('./config/grunt/options/'));
             ],
             dev: [
                 "test:ci",
-                "connect:reports"
+                "php:reports"
             ],
             ci: [
                 "copy:tests",
@@ -680,23 +688,17 @@ grunt.config.merge(loadConfig('./config/grunt/options/'));
             ],
             dev: [
                 "build:dev",
-                "connect:dev",
-                "browserSync:dev",
-                "watch"
-            ],
-            devphp: [
-                "build:dev",
                 "php:dev",
                 "browserSync:dev",
                 "watch"
             ],
             reports: [
                 "test:ci",
-                "connect:reports"
+                "php:reports"
             ],
             docs: [
                 "jsdoc",
-                "connect:docs"
+                "php:docs"
             ]
         }
     }, jitMappings);
