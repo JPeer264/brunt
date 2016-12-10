@@ -1,5 +1,4 @@
-# Grunt Boilerplate
-
+# Brunt
 > This boilerplate is for testing, live coding, linting, deploying, ...
 
 ## Contents
@@ -48,17 +47,16 @@ or
 grunt
 ```
 
-### Live Developing
-
-For developing with live reloading in a browser use:
-
-```sh
-grunt serve:dev
-```
-
 ## Features
 
-### Browser stylesheet
+- [Browser stylesheets](#browser-stylesheets)
+- [Production ready code](#production-ready-code)
+- [ES2015 support](#es2015-support)
+- [Testing](#testing)
+- [Linting](#linting)
+- [Live coding](#live-conding)
+
+### Browser stylesheets
 
 > Generates a own stylesheet for browsers
 
@@ -87,7 +85,27 @@ Output for development:
 
 ### Production ready code
 
-Your code gets automatically optimized when triggering `grunt build:prod`
+Your code gets automatically optimized when triggering `grunt build:prod`. This includes minified files, selectors, autoprefixer and much more.
+
+### ES2015 support
+
+Write your code with ES2015 syntax.
+
+### Testing
+
+Test your code with mocha with `grunt test`
+
+### Linting
+> All configuration files are stored in `config/lint`
+
+Lint your code with different linting tools with `grunt lint`
+
+### Live coding
+
+Always code and see what you did with a self updating browser on your desktop or other devices in your network.
+
+Just use `grunt serve`
+
 
 ## Tasks
 
@@ -133,6 +151,10 @@ Will lint all files with following order: `JS`, `CSS`, `HTML`
 Saves the linting reports into `dev/reports`
 
 
-# Contribution
+## Contribution
 
 I am happy with every PR request, any tweaks or suggestions.
+
+## License
+
+MIT © [Jan Peer Stöcklmair](https://www.jpeer.at)
