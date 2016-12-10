@@ -588,8 +588,9 @@ grunt.config.merge(loadConfig('./config/grunt/options/'));
             ],
             js: {
                 default: [
-                    'manage:js:own',
-                    'manage:js:vendor'
+                    "manage:js:own",
+                    "manage:js:vendor",
+                    "clean:cache"
                 ],
                 own: [
                     "babel",
@@ -609,11 +610,9 @@ grunt.config.merge(loadConfig('./config/grunt/options/'));
                 "copy:vendor"
             ],
             css: [
-                "manage:sass",
                 "cssmin"
             ],
             js: [
-                "manage:js",
                 "removelogging",
                 "uglify:nonvendor"
             ]
@@ -677,9 +676,12 @@ grunt.config.merge(loadConfig('./config/grunt/options/'));
                 "build:prod"
             ],
             prod: [
+                "build:dev",
+                "rcs",
                 "minify",
                 "copy:prod",
-                "cdnify:prod"
+                "cdnify:prod",
+                "clean:dev"
             ],
             dev: [
                 "manage",

@@ -49,5 +49,26 @@ module.exports = {
 				}
 			]
 		}
+	},
+	rcs: {
+		css: {
+			options: {
+				replaceCss: true
+			},
+			files: [{
+				expand: true,
+				cwd: '<%= paths.dev.base %>',
+				src: ['**/*.css', '!src/**/*'],
+				dest: '<%= paths.dev.base %>',
+			}]
+		},
+		all: {
+			files: [{
+				expand: true,
+				cwd: '<%= paths.dev.base %>',
+				src: ['**/*.js', '**/*.html', '!src/**/*'],
+				dest: '<%= paths.dev.base %>',
+			}]
+		}
 	}
 };

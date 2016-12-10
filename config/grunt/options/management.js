@@ -157,10 +157,10 @@ module.exports = {
 				},
 				{
 					expand: true,
-					cwd: "<%= paths.src.base %>",
+					cwd: "<%= paths.dev.base %>",
 					src: [
 						"**/*.{html,php}",
-						"!**/app/**/*.html"
+						"!src/**/*",
 					],
 					dest: "<%= paths.dest.base %>"
 				}
