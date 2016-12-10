@@ -8,7 +8,7 @@
 
 ## Usage
 
-> you must have installed Node v0.12+
+> you must have installed Node v4+ and NPM v3+
 
 Make sure you have instlled Grunt globally
 
