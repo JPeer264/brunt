@@ -1,4 +1,7 @@
 # Brunt
+
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.svg)](http://gruntjs.com/)
+
 > A Grunt boilerplate for testing, live coding, linting, deploying, ...
 
 ## Contents
