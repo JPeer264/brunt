@@ -7,7 +7,7 @@ module.exports = {
 		],
 		options: {
 			lazy: true,
-			basePath: "<%= paths.tmp.folder.tests.instrumented %>"
+			basePath: "<%= paths.dev.folder.tests.instrumented %>"
 		}
 	},
 	mocha: {
@@ -18,7 +18,7 @@ module.exports = {
 			run: true
 		},
 		report: {
-			src: "<%= paths.tmp.folder.tests.base %>/**/*.html",
+			src: "<%= paths.dev.folder.tests.base %>/**/*.html",
 			options: {
 				coverage: {
 					coberturaReport: "<%= paths.reports.coverage %>",

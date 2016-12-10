@@ -35,7 +35,7 @@ module.exports = {
 			csslintrc: "config/lint/csslint.json"
 		},
 		dev: {
-			src: "<%= paths.tmp.files.css %>"
+			src: "<%= paths.dev.files.css %>"
 		},
 		report: {
 			options: {

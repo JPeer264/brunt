@@ -12,7 +12,7 @@ const names = {
     src: 'src',
     assets: 'assets',
     dest: 'dist',
-    tmp: 'tmp',
+    dev: 'dev',
     cache: '.cache',
 };
 
@@ -159,33 +159,33 @@ module.exports = function(grunt) {
                     }
                 }
             },
-            tmp: {
-                base: "<%= paths.base %>/<%= names.tmp %>",
+            dev: {
+                base: "<%= paths.base %>/<%= names.dev %>",
                 folder: {
                     assets: {
-                        base: "<%=   paths.tmp.base %>/<%= names.assets %>",
-                        js: "<%=     paths.tmp.folder.assets.base %>/js",
-                        jss: "<%=    paths.tmp.folder.assets.js %>/**",
-                        css: "<%=    paths.tmp.folder.assets.base %>/css",
-                        csss: "<%=   paths.tmp.folder.assets.css %>/**",
-                        styles: "<%= paths.tmp.folder.assets.css %>/global.css"
+                        base: "<%=   paths.dev.base %>/<%= names.assets %>",
+                        js: "<%=     paths.dev.folder.assets.base %>/js",
+                        jss: "<%=    paths.dev.folder.assets.js %>/**",
+                        css: "<%=    paths.dev.folder.assets.base %>/css",
+                        csss: "<%=   paths.dev.folder.assets.css %>/**",
+                        styles: "<%= paths.dev.folder.assets.css %>/global.css"
                     },
                     tests: {
-                        base: "<%= paths.tmp.base %>/tests",
-                        js: "<%=   paths.tmp.folder.tests.base   %>/js",
-                        instrumented: "<%=   paths.tmp.folder.tests.base   %>/instrumented",
-                        css: "<%=  paths.tmp.folder.tests.base   %>/css"
+                        base: "<%= paths.dev.base %>/tests",
+                        js: "<%=   paths.dev.folder.tests.base   %>/js",
+                        instrumented: "<%=   paths.dev.folder.tests.base   %>/instrumented",
+                        css: "<%=  paths.dev.folder.tests.base   %>/css"
                     },
                     docs: {
-                        base: "<%= paths.tmp.base %>/docs"
+                        base: "<%= paths.dev.base %>/docs"
                     }
                 },
                 files: {
-                    css: "<%= paths.tmp.folder.assets.csss %>/*.css",
+                    css: "<%= paths.dev.folder.assets.csss %>/*.css",
                     instrumented: [
-                        "<%=   paths.tmp.folder.tests.instrumented   %>/**/*.class.js",
-                        "<%=   paths.tmp.folder.tests.instrumented   %>/**/*.js",
-                        "!<%=   paths.tmp.folder.tests.instrumented   %>/**/*_.js"
+                        "<%=   paths.dev.folder.tests.instrumented   %>/**/*.class.js",
+                        "<%=   paths.dev.folder.tests.instrumented   %>/**/*.js",
+                        "!<%=   paths.dev.folder.tests.instrumented   %>/**/*_.js"
                     ]
                 }
             },
@@ -354,7 +354,7 @@ module.exports = function(grunt) {
                 }
             },
             reports: {
-                base: "<%= paths.tmp.base     %>/reports",
+                base: "<%= paths.dev.base     %>/reports",
                 coverage: "<%= paths.reports.base %>/coverage",
                 checkstyle: "<%= paths.reports.base %>/checkstyle.xml",
                 pmd: "<%=        paths.reports.base %>/pmd.xml",
@@ -514,7 +514,7 @@ grunt.config.merge(loadConfig('./config/grunt/options/'));
      * Concat every scss file in a subdirectory of src/assets/scss/
      * every folder in scss becomes a own css file. E.g. scss/ie8/* -> css/ie8.css
      */
-    grunt.registerTask('manageScssFolders', "Finds and prepares scss files into .tmp/css folder for concatenation.", function() {
+    grunt.registerTask('manageScssFolders', "Finds and prepares scss files into .dev/css folder for concatenation.", function() {
         // get all module directories
         grunt.file.expand('./' + names.src + '/' + names.assets + '/scss/*').forEach(function (dir) {
             var dirName;
@@ -547,7 +547,7 @@ grunt.config.merge(loadConfig('./config/grunt/options/'));
 
                 sass[dirName] = {
                     src:  dir + '/' + dirName + '.GruntGenerated.scss',
-                    dest: '<%= paths.tmp.folder.assets.css %>/' + dirName + '.css'
+                    dest: '<%= paths.dev.folder.assets.css %>/' + dirName + '.css'
                 };
 
                 clean[dirName] = {

@@ -10,7 +10,7 @@ module.exports = {
 						"<%= paths.cache.files.assets.js %>",
 						"<%= paths.cache.ignore.couldBeVendor %>"
 					],
-					dest: "<%= paths.tmp.folder.assets.js %>/main.js"
+					dest: "<%= paths.dev.folder.assets.js %>/main.js"
 				}
 			]
 		},
@@ -18,21 +18,21 @@ module.exports = {
 			files: [
 				{
 					src: [
-						"<%= paths.tmp.folder.assets.js %>/bower.js",
+						"<%= paths.dev.folder.assets.js %>/bower.js",
 						"<%= paths.src.files.couldBeVendor.js %>",
 						"<%= paths.vendor.js %>",
 						"<%= paths.src.ignore.min %>"
 					],
-					dest: "<%= paths.tmp.folder.assets.js %>/vendor.js"
+					dest: "<%= paths.dev.folder.assets.js %>/vendor.js"
 				}
 			]
 		},
 		tests: {
 			files: {
-				"<%= paths.tmp.folder.tests.base %>/js/tests.js": "<%= paths.src.tests %>",
-				"<%= paths.tmp.folder.tests.js %>/instrument.js": "<%= paths.tmp.files.instrumented %>",
-				"<%= paths.tmp.folder.tests.js %>/vendor.js": [
-					"<%= paths.tmp.folder.assets.js %>/bower.js",
+				"<%= paths.dev.folder.tests.base %>/js/tests.js": "<%= paths.src.tests %>",
+				"<%= paths.dev.folder.tests.js %>/instrument.js": "<%= paths.dev.files.instrumented %>",
+				"<%= paths.dev.folder.tests.js %>/vendor.js": [
+					"<%= paths.dev.folder.assets.js %>/bower.js",
 					"<%= paths.src.files.couldBeVendor.js %>",
 					"<%= paths.vendor.js %>",
 					"<%= paths.src.ignore.min %>"
@@ -53,7 +53,7 @@ module.exports = {
 						"<%= paths.cache.files.assets.scss %>",
 						"<%= paths.src.files.css %>"
 					],
-					dest: "<%= paths.tmp.folder.assets.css %>/global.css"
+					dest: "<%= paths.dev.folder.assets.css %>/global.css"
 				}
 			]
 		}
@@ -74,7 +74,7 @@ module.exports = {
 	},
 	bower_concat: {
 		all: {
-			dest: "<%= paths.tmp.folder.assets.js %>/bower.js",
+			dest: "<%= paths.dev.folder.assets.js %>/bower.js",
 			bowerOptions: {},
 			dependencies: {},
 			process: function (src) {
@@ -101,8 +101,8 @@ module.exports = {
 		}
 	},
 	clean: {
-		tmp: {
-			src: "<%= paths.tmp.base %>"
+		dev: {
+			src: "<%= paths.dev.base %>"
 		},
 		dist: {
 			src: "<%= paths.dest.base %>"
@@ -111,10 +111,10 @@ module.exports = {
 			src: "<%= paths.cache.base %>"
 		},
 		bower: {
-			src: "<%= paths.tmp.folder.assets.js %>/bower.js"
+			src: "<%= paths.dev.folder.assets.js %>/bower.js"
 		},
 		template: {
-			src: "<%= paths.tmp.folder.assets.js %>/template.js"
+			src: "<%= paths.dev.folder.assets.js %>/template.js"
 		}
 	},
 	copy: {
@@ -129,7 +129,7 @@ module.exports = {
 						"json/**",
 						"fonts/**"
 					],
-					dest: "<%= paths.tmp.folder.assets.base %>"
+					dest: "<%= paths.dev.folder.assets.base %>"
 				},
 				{
 					expand: true,
@@ -138,7 +138,7 @@ module.exports = {
 						"**/*.{html,php}",
 						"!**/app/**/*.html"
 					],
-					dest: "<%= paths.tmp.base %>/"
+					dest: "<%= paths.dev.base %>/"
 				}
 			]
 		},
@@ -171,14 +171,14 @@ module.exports = {
 				expand: true,
 				cwd: "<%= paths.base %>",
 				src: "src/**",
-				dest: "<%= paths.tmp.base %>"
+				dest: "<%= paths.dev.base %>"
 			}]
 		},
 		vendor: {
 			files: [
 				{
 					expand: true,
-					cwd: "<%= paths.tmp.folder.assets.js %>",
+					cwd: "<%= paths.dev.folder.assets.js %>",
 					src: "vendor.js",
 					dest: "<%= paths.dest.folder.assets.js %>",
 					ext: ".min.js"
@@ -193,7 +193,7 @@ module.exports = {
 					src: [
 						"**"
 					],
-					dest: "<%= paths.tmp.folder.tests.base %>"
+					dest: "<%= paths.dev.folder.tests.base %>"
 				}
 			]
 		}
@@ -236,7 +236,7 @@ module.exports = {
 				"<%= paths.src.allFiles.js %>",
 				"<%= paths.src.ignore.couldBeVendor %>"
 			],
-			dest: "<%= paths.tmp.folder.docs.base %>"
+			dest: "<%= paths.dev.folder.docs.base %>"
 		}
 	}
 };

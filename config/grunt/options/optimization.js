@@ -9,7 +9,7 @@ module.exports = {
 			files: [
 				{
 					expand: true,
-					cwd: "<%= paths.tmp.folder.assets.css %>",
+					cwd: "<%= paths.dev.folder.assets.css %>",
 					src: [
 						"**/*.css",
 						"!**/*.min.css"
@@ -24,14 +24,14 @@ module.exports = {
 		options: {
 			map: {
 				inline: false,
-				annotation: '<%= paths.tmp.folder.assets.css %>'
+				annotation: '<%= paths.dev.folder.assets.css %>'
 			},
 			processors: [
 				require('autoprefixer')({ browsers: 'last 2 versions' })
 			]
 		},
 		all: {
-			src: '<%= paths.tmp.files.css %>'
+			src: '<%= paths.dev.files.css %>'
 		}
 	},
 	uglify: {
@@ -39,7 +39,7 @@ module.exports = {
 			files: [
 				{
 					expand: true,
-					cwd: "<%= paths.tmp.folder.assets.js %>",
+					cwd: "<%= paths.dev.folder.assets.js %>",
 					src: [
 						"*.js",
 						"!vendor.js"

@@ -48,7 +48,7 @@ module.exports = {
 		},
 		docs: {
 			options: {
-				base: "<%= paths.tmp.folder.docs.base %>",
+				base: "<%= paths.dev.folder.docs.base %>",
 				port: 8002,
 				keepalive: true,
 				open: true
@@ -58,7 +58,7 @@ module.exports = {
 			options: {
 				hostname: "127.0.0.1",
 				port: 1337,
-				base: "tmp"
+				base: "<%= names.dev %>"
 			}
 		}
 	},
@@ -66,9 +66,9 @@ module.exports = {
 		dev: {
 			bsFiles: {
 				src: [
-					"<%= paths.tmp.base %>/**/*.html",
-					"<%= paths.tmp.base %>/**/*.css",
-					"<%= paths.tmp.base %>/**/*.js"
+					"<%= paths.dev.base %>/**/*.html",
+					"<%= paths.dev.base %>/**/*.css",
+					"<%= paths.dev.base %>/**/*.js"
 				]
 			},
 			options: {

@@ -28,7 +28,7 @@ npm i
 
 **Dev**
 
-Build the developing code. The builded files are stored in `tmp`
+Build the developing code. The builded files are stored in `dev`
 
 ```sh
 grunt build:dev
@@ -79,7 +79,7 @@ Will generate a file called: `ie8.css`. This folder is also fully ignored from t
 
 Output for development:
 ```js
-└─── tmp/
+└─── dev/
     └─── assets/
         ├─── global.css
         └─── ie8.css
@@ -104,7 +104,7 @@ Your code gets automatically optimized when triggering `grunt build:prod`
 
 #### manage:js
 
-This will manage the `JS` files and put the development ready code into the directory `tmp`
+This will manage the `JS` files and put the development ready code into the directory `dev`
 
 ```sh
 grunt manage:js
@@ -112,7 +112,7 @@ grunt manage:js
 
 #### manage:sass
 
-This will manage the `SASS` files and put the development ready code into the directory `tmp`
+This will manage the `SASS` files and put the development ready code into the directory `dev`
 
 ```sh
 grunt manage:sass
@@ -130,7 +130,7 @@ Will lint all files with following order: `JS`, `CSS`, `HTML`
 
 #### lint:reports
 
-Saves the linting reports into `tmp/reports`
+Saves the linting reports into `dev/reports`
 
 
 # Contribution

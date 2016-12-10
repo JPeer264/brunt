@@ -1,6 +1,6 @@
 # grunt generated files
 dist
-tmp
+dev
 .cache
 
 # modules
