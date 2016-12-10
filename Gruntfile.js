@@ -38,28 +38,123 @@ module.exports = function(grunt) {
         paths: {
             base: ".",
             cache: {
-                base: "<%= paths.base %>/.cache",
+                base: "<%=  paths.base      %>/.cache",
+                tests: "<%= paths.cache.base  %>/**/*.spec.js",
                 folder: {
-                    html: "<%= paths.cache.base %>/html",
                     assets: {
-                        base: "<%= paths.cache.base %>/assets",
-                        scss: "<%= paths.cache.folder.assets.base %>/scss"
-                    }
-                },
-                files: {
-                    sourcemaps: {
-                        scss: "<%= paths.cache.base %>/**/*.scss.map"
-                    },
-                    assets: {
-                        scss: [
-                            "<%= paths.cache.folder.assets.scss %>/**/*.scss",
-                            "!<%= paths.cache.folder.assets.scss %>/browser.*/**/*.scss",
-                            "<%= paths.cache.ignore._scss %>",
-                        ],
+                        base: "<%=  paths.cache.base               %>/<%= names.assets %>",
+                        js: "<%=    paths.cache.folder.assets.base %>/js",
+                        jss: "<%=   paths.cache.folder.assets.js   %>/**",
+                        scss: "<%=  paths.cache.folder.assets.base %>/scss",
+                        scsss: "<%= paths.cache.folder.assets.scss %>/**",
+                        css: "<%=   paths.cache.folder.assets.base %>/css",
+                        csss: "<%=  paths.cache.folder.assets.css  %>/**",
+                        img: "<%=   paths.cache.folder.assets.base %>/img",
+                        imgs: "<%=  paths.cache.folder.assets.img  %>/**",
+                        svg: "<%=   paths.cache.folder.assets.base %>/svg",
+                        svgs: "<%=  paths.cache.folder.assets.svg  %>/**",
+                        json: "<%=  paths.cache.folder.assets.base %>/json",
+                        jsons: "<%= paths.cache.folder.assets.json %>/**"
                     }
                 },
                 ignore: {
+                    modules: [
+                        "!<%= paths.cache.base %>/**/node_modules/**/*.js",
+                        "!<%= paths.cache.base %>/**/node_modules/**/*.css",
+                        "!<%= paths.cache.base %>/**/node_modules/**/*.html"
+                    ],
+                    tests: [
+                        "!<%= paths.cache.tests %>"
+                    ],
+                    _js: [
+                        "!<%=   paths.cache.base   %>/**/_*.js"
+                    ],
+                    couldBeVendor: [
+                        "!<%= paths.cache.base %>/**/*.min.js",
+                        "!<%= paths.cache.base %>/**/*jquery*.js",
+                        "!<%= paths.cache.base %>/**/*angular*.js",
+                        "!<%= paths.cache.base %>/**/*ember*.js",
+                        "!<%= paths.cache.base %>/**/*bootstrap*.js",
+                        "!<%= paths.cache.base %>/**/*.min.css",
+                        "!<%= paths.cache.base %>/**/*bootstrap*.css"
+                    ],
                     _scss: "!<%= paths.cache.base %>/**/_*.scss",
+                    _css: "!<%= paths.cache.base %>/**/_*.css",
+                    _html: "!<%= paths.cache.base %>/**/_*.html",
+                    assets: [
+                        "!<%= paths.cache.files.assets.js",
+                        "!<%= paths.cache.files.assets.css",
+                        "!<%= paths.cache.files.assets.scss",
+                        "!<%= paths.cache.files.assets.img",
+                        "!<%= paths.cache.files.assets.svg",
+                        "!<%= paths.cache.files.assets.json"
+                    ],
+                    min: [
+                        "!<%= paths.cache.base %>/**/*.min.*"
+                    ]
+                },
+                allFiles: {
+                    js: "<%=   paths.cache.base %>/**/*.js",
+                    scss: "<%= paths.cache.base %>/**/*.scss",
+                    css: "<%=  paths.cache.base %>/**/*.css",
+                    html: "<%= paths.cache.base %>/**/*.html",
+                    img: "<%=  paths.cache.base %>/**/*.img",
+                    svg: "<%=  paths.cache.base %>/**/*.svg",
+                    json: "<%= paths.cache.base %>/**/*.json"
+                },
+                files: {
+                    js: [
+                        "<%= paths.cache.allFiles.js %>",
+                        "<%= paths.cache.ignore._js %>",
+                        "<%= paths.cache.ignore.tests %>"
+                    ],
+                    scss: [
+                        "<%= paths.cache.allFiles.scss %>",
+                        "<%= paths.cache.ignore._scss %>"
+                    ],
+                    css: [
+                        "<%= paths.cache.allFiles.css %>",
+                        "<%= paths.cache.ignore._css %>"
+                    ],
+                    html: [
+                        "<%= paths.cache.allFiles.html %>",
+                        "<%= paths.cache.ignore._scss %>"
+                    ],
+                    assets: {
+                        js: [
+                            "<%= paths.cache.folder.assets.jss %>/*.class.js",
+                            "<%= paths.cache.folder.assets.jss %>/*.js",
+                            "<%= paths.cache.folder.assets.jss %>/*.init.js",
+                            "<%= paths.cache.ignore._js %>",
+                            "<%= paths.cache.ignore.tests %>"
+                        ],
+                        scss: [
+                            "<%= paths.cache.folder.assets.scss %>/*.scss",
+                            "<%= paths.cache.ignore._scss %>",
+                            "<%= paths.cache.folder.assets.css %>/*.css",
+                            "<%= paths.cache.ignore._css %>"
+                        ],
+                        oldBrowserScss: [
+                            "<%= pahts.cache.folder.assets.scss %>/**/*.scss",
+                            "!<%= pahts.cache.folder.assets.scss %>/*.scss"
+                        ],
+                        img: "<%=  paths.cache.folder.assets.imgs %>/*.img",
+                        svg: "<%=  paths.cache.folder.assets.svgs %>/*.svg",
+                        json: "<%= paths.cache.folder.assets.jsons %>/*.json"
+                    },
+                    couldBeVendor: {
+                        js: [
+                            "<%= paths.cache.base %>/**/*.min.js",
+                            "<%= paths.cache.base %>/**/*jquery*.js",
+                            "<%= paths.cache.base %>/**/*angular*.js",
+                            "<%= paths.cache.base %>/**/*ember*.js",
+                            "<%= paths.cache.base %>/**/*bootstrap*.js"
+                        ],
+                        css: [
+                            "<%= paths.cache.base %>/**/*.min.css",
+                            "<%= paths.cache.base %>/**/*bootstrap*.css"
+                        ]
+                    }
                 }
             },
             tmp: {
@@ -485,6 +580,7 @@ grunt.config.merge(loadConfig('./config/grunt/options/'));
                 "clean:cache"
             ],
             js: [
+                "babel",
                 "concat:js",
                 "bower_concat",
                 "concat:vendor",

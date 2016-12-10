@@ -1,11 +1,14 @@
 module.exports = {
 	concat: {
+		options: {
+			sourceMap: true
+		},
 		js: {
 			files: [
 				{
 					src: [
-						"<%= paths.src.files.assets.js %>",
-						"<%= paths.src.ignore.couldBeVendor %>"
+						"<%= paths.cache.files.assets.js %>",
+						"<%= paths.cache.ignore.couldBeVendor %>"
 					],
 					dest: "<%= paths.tmp.folder.assets.js %>/main.js"
 				}
@@ -53,6 +56,20 @@ module.exports = {
 					dest: "<%= paths.tmp.folder.assets.css %>/global.css"
 				}
 			]
+		}
+	},
+	babel: {
+		options: {
+			sourceMap: true,
+			presets: ['es2015']
+		},
+		dist: {
+			files: [{
+				expand: true,
+				cwd: "<%= paths.src.folder.assets.js %>",
+				src: "**/*.js",
+				dest: "<%= paths.cache.folder.assets.js %>"
+			}]
 		}
 	},
 	bower_concat: {
