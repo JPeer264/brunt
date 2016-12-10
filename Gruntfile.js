@@ -517,53 +517,57 @@ grunt.config.merge(loadConfig('./config/grunt/options/'));
     grunt.registerTask('manageScssFolders', "Finds and prepares scss files into .dev/css folder for concatenation.", function() {
         // get all module directories
         grunt.file.expand('./' + names.src + '/' + names.assets + '/scss/*').forEach(function (dir) {
-            var dirName;
+            // get the current concat object from initConfig
+            const sass   = grunt.config.get('sass')   || {};
+            const concat = grunt.config.get('concat') || {};
+            const clean  = grunt.config.get('clean')  || {};
+
+            let dirName;
+            let newDir;
 
             // delete if no indexOf browser.
             if (dir.indexOf('browser.') === -1) {
                 dir = '';
             }
 
-            dirName = dir.substr(dir.lastIndexOf('.')+1);
+            dirName = dir.substr(dir.lastIndexOf('.') + 1);
 
-            // get the current concat object from initConfig
-            var copy   = grunt.config.get('copy')   || {};
-            var sass   = grunt.config.get('sass')   || {};
-            var concat = grunt.config.get('concat') || {};
-            var clean  = grunt.config.get('clean')  || {};
 
             // create a subtask for each module, find all src files
             // and combine into a single js file per module
             if (dir !== '') {
+                newDir = grunt.config.get('paths.cache.folder.assets.scss') + '/browser.' + dirName;
+
                 // all necessary scss files are now in .sass-cache/assets/scss/DIR/*.scss
-                console.log(dirName);
-                concat[dirName] = {
-                    src:  [
-                        dir + '/**/*.scss',
-                        '!' + dir + '/**/_*.scss',
-                    ],
-                    dest: dir + '/'+ dirName + '.GruntGenerated.scss'
-                };
-
                 sass[dirName] = {
-                    src:  dir + '/' + dirName + '.GruntGenerated.scss',
-                    dest: '<%= paths.dev.folder.assets.css %>/' + dirName + '.css'
+                    options: {
+                        sourceMap: true
+                    },
+                    files: [{
+                        expand: true,
+                        cwd: grunt.config.get('paths.src.folder.assets.scss'),
+                        src: 'browser.*/**/*.scss',
+                        dest: grunt.config.get('paths.cache.folder.assets.scss')
+                    }]
                 };
 
-                clean[dirName] = {
-                    src: [
-                        dir + '/' + dirName + '.GruntGenerated.scss',
-                        dir + '/' + dirName + '.GruntGenerated.scss.map'
-                    ]
+                concat[dirName] = {
+                    options: {
+                        sourceMap: true
+                    },
+                    src:  [
+                        newDir + '/**/*.scss',
+                        '!' + newDir + '/**/_*.scss',
+                    ],
+                    dest: grunt.config.get('paths.dev.folder.assets.css') + '/' + dirName + '.css'
                 };
 
                 // add module subtasks to the concat task in initConfig
-                grunt.config.set('concat', concat);
                 grunt.config.set('sass', sass);
-                grunt.config.set('clean', clean);
+                grunt.config.set('concat', concat);
 
                 // run all task which are generated before
-                grunt.task.run('concat:' + dirName,'sass:' + dirName, 'clean:' + dirName);
+                grunt.task.run('sass:' + dirName, 'concat:' + dirName);
             }
         });
     });
