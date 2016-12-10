@@ -1,5 +1,5 @@
 # Brunt
-> This boilerplate is for testing, live coding, linting, deploying, ...
+> A Grunt boilerplate for testing, live coding, linting, deploying, ...
 
 ## Contents
 

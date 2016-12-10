@@ -1,6 +1,6 @@
 {
   "name": "brunt",
-  "description": "Grunt boilerplate for testing, live coding, linting, deploying, ...",
+  "description": "A Grunt boilerplate for testing, live coding, linting, deploying, ...",
   "version": "0.0.0",
   "main": "Gruntfile.js",
   "scripts": {
