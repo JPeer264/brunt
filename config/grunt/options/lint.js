@@ -1,7 +1,7 @@
 module.exports = {
 	eslint: {
 		options: {
-			config: "config/eslint/.eslintrc"
+			configFile: "config/lint/eslint.json"
 		},
 		dev: {
 			src: [
@@ -32,13 +32,10 @@ module.exports = {
 	},
 	csslint: {
 		options: {
-			csslintrc: "config/csslint/config.json"
+			csslintrc: "config/lint/csslint.json"
 		},
 		dev: {
-			src: [
-				"<%= paths.src.files.css %>",
-				"<%= paths.tmp.files.css %>"
-			]
+			src: "<%= paths.tmp.files.css %>"
 		},
 		report: {
 			options: {
@@ -57,7 +54,7 @@ module.exports = {
 			failHard: true,
 			stoponerror: false,
 			reset: true,
-			serverUrl: "http://validator.test.dmc.de/check",
+			serverUrl: "https://validator.w3.org/check",
 			path: "<%= paths.reports.html %>",
 			reportpath: "<%=paths.reports.html2 %>",
 			relaxerror: [
@@ -68,12 +65,8 @@ module.exports = {
 			]
 		},
 		noapp: {
-			options: {
-				wrapfile: false
-			},
 			src: [
-				"<%= paths.src.allFiles.html %>",
-				"<%= paths.src.ignore.appHtml %>"
+				"<%= paths.src.allFiles.html %>"
 			]
 		}
 	}

@@ -622,7 +622,16 @@ grunt.config.merge(loadConfig('./config/grunt/options/'));
                 "eslint:report",
                 "csslint:report",
                 "force:off"
-            ]
+            ],
+            js: [
+                "eslint:dev"
+            ],
+            css: [
+                "csslint:dev"
+            ],
+            html: [
+                "validation"
+            ],
         },
         test: {
             default: [
