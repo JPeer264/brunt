@@ -565,6 +565,7 @@ grunt.config.merge(loadConfig('./config/grunt/options/'));
     require('et-grunt')(grunt, {
         /* taskList start */
         default: [
+            "clean",
             "build:prod"
         ],
         manage: {
@@ -676,7 +677,8 @@ grunt.config.merge(loadConfig('./config/grunt/options/'));
             ],
             dev: [
                 "manage",
-                "copy:dev"
+                "copy:dev",
+                "copy:src"
             ],
             ci: [
                 "build:prod"

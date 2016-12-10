@@ -166,6 +166,14 @@ module.exports = {
 				}
 			]
 		},
+		src: {
+			files: [{
+				expand: true,
+				cwd: "<%= paths.base %>",
+				src: "src/**",
+				dest: "<%= paths.tmp.base %>"
+			}]
+		},
 		vendor: {
 			files: [
 				{
