@@ -27,18 +27,6 @@ module.exports = {
 				}
 			]
 		},
-		tests: {
-			files: {
-				"<%= paths.dev.folder.tests.base %>/js/tests.js": "<%= paths.src.tests %>",
-				"<%= paths.dev.folder.tests.js %>/instrument.js": "<%= paths.dev.files.instrumented %>",
-				"<%= paths.dev.folder.tests.js %>/vendor.js": [
-					"<%= paths.dev.folder.assets.js %>/bower.js",
-					"<%= paths.src.files.couldBeVendor.js %>",
-					"<%= paths.vendor.js %>",
-					"<%= paths.src.ignore.min %>"
-				]
-			}
-		},
 		css: {
 			options: {
 				process: function (src, filepath) {
@@ -182,18 +170,6 @@ module.exports = {
 					src: "vendor.js",
 					dest: "<%= paths.dest.folder.assets.js %>",
 					ext: ".min.js"
-				}
-			]
-		},
-		tests: {
-			files: [
-				{
-					expand: true,
-					cwd: "./config/test",
-					src: [
-						"**"
-					],
-					dest: "<%= paths.dev.folder.tests.base %>"
 				}
 			]
 		}

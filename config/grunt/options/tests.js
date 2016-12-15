@@ -10,23 +10,6 @@ module.exports = {
 			basePath: "<%= paths.dev.folder.tests.instrumented %>"
 		}
 	},
-	mocha: {
-		options: {
-			reporter: "Spec",
-			log: true,
-			logErrors: true,
-			run: true
-		},
-		report: {
-			src: "<%= paths.dev.folder.tests.base %>/**/*.html",
-			options: {
-				coverage: {
-					coberturaReport: "<%= paths.reports.coverage %>",
-					htmlReport: "<%= paths.reports.coverage %>"
-				}
-			}
-		}
-	},
 	karma: {
 		unit: {
 			options: {

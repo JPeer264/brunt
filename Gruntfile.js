@@ -659,10 +659,8 @@ module.exports = function(grunt) {
                 "php:reports"
             ],
             ci: [
-                "copy:tests",
                 "instrument",
-                "concat:tests",
-                "mocha:report"
+                "karma"
             ],
             reports: [
                 "force:on",
