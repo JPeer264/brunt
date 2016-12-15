@@ -26,5 +26,14 @@ module.exports = {
 				}
 			}
 		}
+	},
+	karma: {
+		unit: {
+			options: {
+				configFile: './config/karma.js'
+			},
+			port: 2323,
+			singleRun: true
+		}
 	}
 };
