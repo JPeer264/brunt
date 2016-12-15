@@ -1,7 +1,7 @@
 module.exports = {
 	eslint: {
 		options: {
-			configFile: "config/lint/eslint.json"
+			configFile: "config/eslint.json"
 		},
 		dev: {
 			src: [
@@ -32,7 +32,7 @@ module.exports = {
 	},
 	csslint: {
 		options: {
-			csslintrc: "config/lint/csslint.json"
+			csslintrc: "config/csslint.json"
 		},
 		dev: {
 			src: "<%= paths.dev.files.css %>"
