@@ -616,8 +616,8 @@ module.exports = function(grunt) {
                 "cssmin"
             ],
             js: [
+                "uglify:nonvendor",
                 "removelogging",
-                "uglify:nonvendor"
             ]
         },
         lint: {
