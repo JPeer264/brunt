@@ -3,7 +3,6 @@
 const jitMappings = {
     removelogging: 'grunt-remove-logging',
     validation: 'grunt-html-validation',
-    mocha: 'grunt-mocha-phantom-istanbul',
     instrument: 'grunt-istanbul',
     scsslint: 'grunt-scss-lint',
 };
@@ -443,47 +442,47 @@ module.exports = function(grunt) {
     // see ./config/grunt/helpers.js
     }); // grunt.initConfig END
 
-// merge tasks in config folder with this grunt file
-// all options in the subdirectory are now available
-grunt.config.merge(loadConfig('./config/grunt/options/'));
+    // merge tasks in config folder with this grunt file
+    // all options in the subdirectory are now available
+    grunt.config.merge(loadConfig('./config/grunt/options/'));
 
-/*
- * @start tasks
- *
- * * helpers
- *   ** default
- *   ** force:on
- *   ** force:off
- *   ** manageScssFolder
- *
- * * manage
- *   ** manage
- *   ** manage:js
- *   ** manage:sass
- *
- * * minify
- *   ** minify
- *   ** minify:js
- *   ** minify:app
- *   ** minify:css
- *
- * * lint
- *   ** lint:dev
- *   ** lint:reports
- *   ** lint:ci
- *
- * * tests
- *   ** test:dev
- *   ** test:reports
- *   ** test:ci
- *
- * * reports
- *   ** reports
- *
- * * build
- *   ** build:prod
- *   ** build:dev
- */
+    /*
+     * @start tasks
+     *
+     * * helpers
+     *   ** default
+     *   ** force:on
+     *   ** force:off
+     *   ** manageScssFolder
+     *
+     * * manage
+     *   ** manage
+     *   ** manage:js
+     *   ** manage:sass
+     *
+     * * minify
+     *   ** minify
+     *   ** minify:js
+     *   ** minify:app
+     *   ** minify:css
+     *
+     * * lint
+     *   ** lint:dev
+     *   ** lint:reports
+     *   ** lint:ci
+     *
+     * * tests
+     *   ** test:dev
+     *   ** test:reports
+     *   ** test:ci
+     *
+     * * reports
+     *   ** reports
+     *
+     * * build
+     *   ** build:prod
+     *   ** build:dev
+     */
 
     /*
      * @tasks helpers
