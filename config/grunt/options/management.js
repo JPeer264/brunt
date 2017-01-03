@@ -103,6 +103,9 @@ module.exports = {
 		},
 		template: {
 			src: "<%= paths.dev.folder.assets.js %>/template.js"
+		},
+		coverage: {
+			src: "<%= paths.coverage.base %>"
 		}
 	},
 	copy: {

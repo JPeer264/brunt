@@ -40,7 +40,7 @@ module.exports = {
 	php: {
 		reports: {
 			options: {
-				base: "<%= paths.reports.coverage %>",
+				base: "<%= paths.coverage.base %>",
 				port: 8001,
 				keepalive: true,
 				open: true

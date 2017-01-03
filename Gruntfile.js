@@ -352,13 +352,13 @@ module.exports = function(grunt) {
                     json: "<%=   paths.dest.folder.assets.jsons %>/*.json"
                 }
             },
-            reports: {
-                base: "<%= paths.dev.base     %>/reports",
-                coverage: "<%= paths.reports.base %>/coverage",
-                checkstyle: "<%= paths.reports.base %>/checkstyle.xml",
-                pmd: "<%=        paths.reports.base %>/pmd.xml",
-                html: "<%= paths.reports.base %>/.html-status.json",
-                html2: "<%= paths.reports.base %>/app.json",
+            coverage: {
+                base: "<%=       paths.base     %>/coverage",
+                reports: "<%=   paths.base %>/reports",
+                checkstyle: "<%= paths.coverage.reports %>/checkstyle.xml",
+                pmd: "<%=        paths.coverage.reports %>/pmd.xml",
+                html: "<%=       paths.coverage.reports %>/.html-status.json",
+                html2: "<%=      paths.coverage.reports %>/app.json",
                 csslint: "",
                 js: ""
             },

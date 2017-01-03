@@ -13,7 +13,7 @@ module.exports = {
 		report: {
 			options: {
 				format: "checkstyle",
-				outputFile: "<%= paths.reports.checkstyle %>"
+				outputFile: "<%= paths.coverage.checkstyle %>"
 			},
 			src: "<%= eslint.dev.src %>"
 		}
@@ -22,7 +22,7 @@ module.exports = {
 		report: {
 			options: {
 				reporter: "pmd",
-				reportFile: "<%= paths.reports.pmd %>"
+				reportFile: "<%= paths.coverage.pmd %>"
 			},
 			src: [
 				"<%= paths.src.allFiles.js %>",
@@ -42,7 +42,7 @@ module.exports = {
 				formatters: [
 					{
 						id: "lint-xml",
-						dest: "<%= paths.reports.base %>/csslint.xml"
+						dest: "<%= paths.coverage.csslint %>"
 					}
 				]
 			},
@@ -55,8 +55,8 @@ module.exports = {
 			stoponerror: false,
 			reset: true,
 			serverUrl: "https://validator.w3.org/check",
-			path: "<%= paths.reports.html %>",
-			reportpath: "<%=paths.reports.html2 %>",
+			path: "<%= paths.coverage.html %>",
+			reportpath: "<%=paths.coverage.html2 %>",
 			relaxerror: [
 				"Any button descendant of a label element with a for attribute must have an ID value that matches that for attribute.",
 				"Element [-a-zA-Z]+ not allowed as child of element [-a-zA-Z]+ in this context",
